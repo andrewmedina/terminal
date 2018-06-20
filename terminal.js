@@ -1,19 +1,26 @@
-var TreeModel = require('tree-model'), tree = new TreeModel,
-    node = tree.parse({ name: 'root' }), path = node.getPath(), cds = [];
-function exists(children, subdirectory) {
-  var exists = false;
-  for (var i = 0; i < path[0].children.length; i++) {
+const TreeModel = require('tree-model'), 
+      tree = new TreeModel,
+      node = tree.parse({ name: 'root' }), 
+      path = node.getPath(), 
+      cds = [];
+
+const exists = (children, subdirectory) => {
+  let exists = false;
+  for (let i = 0; i < path[0].children.length; i++) {
     if (children[i].model.name === subdirectory) exists = true;
   }
   return exists;
 }
-function processFile(inputFile) {
-  var fs = require('fs'), readline = require('readline'),
+
+const processFile = inputFile => {
+  let fs = require('fs'), 
+      readline = require('readline'),
       instream = fs.createReadStream(inputFile),
       outstream = new (require('stream'))(),
       rl = readline.createInterface(instream, outstream);
+    
   rl.on('line', line => {
-    var splitLine = line.split(' ');
+    let splitLine = line.split(' ');
     switch(splitLine[0]) {
       case "cd": {
         console.log(`Command: cd ${splitLine[1]}`);
