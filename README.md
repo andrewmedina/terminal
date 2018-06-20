@@ -1,4 +1,4 @@
-# Recreating a Termina
+# Recreating a Terminal
 This is a takehome I did for a company. To run, simply go to the terminal and type `npm install && node terminal.js`. Ensure that input.dat is in the same directory so that the data can be parsed properly.
 
 
