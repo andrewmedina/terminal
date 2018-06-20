@@ -10,7 +10,7 @@ const exists = (children, subdirectory) => {
     if (children[i].model.name === subdirectory) exists = true;
   }
   return exists;
-}
+};
 
 const processFile = inputFile => {
   let fs = require('fs'), 
@@ -36,7 +36,9 @@ const processFile = inputFile => {
         console.log(`Command: dir\nDirectory of root${cds.map(cd => `\\${cd}`).join('')}:`);
         if (path[0].hasChildren()) {
           var sortedChildren = path[0].children.map(child => child.model.name).sort();
-          for (var i = 0; i < sortedChildren.length; i) console.log(`${sortedChildren.splice(i, 10).join(' ')}`);
+          for (var i = 0; i < sortedChildren.length; i) {
+            console.log(`${sortedChildren.splice(i, 10).join(' ')}`);
+          }
         } else {
           console.log('No subdirectories');
         }
@@ -65,6 +67,8 @@ const processFile = inputFile => {
         return "This command isn't available yet. Sorry about that!";
     }
   }).on('close', line => console.log('End of Directory Problem by Andrew Marten Medina'));
-}
-console.log('Directory Problem by Andrew Marten Medina')
+};
+
+console.log('Directory Problem by Andrew Marten Medina');
+
 processFile('./input.dat');
